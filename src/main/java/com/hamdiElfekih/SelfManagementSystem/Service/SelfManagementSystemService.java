@@ -21,4 +21,8 @@ public class SelfManagementSystemService {
     public void setUser(User user) {
         selfManagementSystemRepository.save(user);
     }
+
+    public void deleteUserById(Long id) {
+        selfManagementSystemRepository.deleteById(id);
+    }
 }
