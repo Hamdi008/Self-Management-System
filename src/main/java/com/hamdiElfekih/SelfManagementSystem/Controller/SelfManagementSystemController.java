@@ -40,6 +40,11 @@ public class SelfManagementSystemController {
         selfManagementSystemService.deleteUserById(id);
     }
 
+    @DeleteMapping("/delete-all-users")
+    public void deleteAllUsers() {
+        selfManagementSystemService.deleteAllUsers();
+    }
+
     @PutMapping("/update-user/{id}")
     public ResponseEntity<User> updateUserById(@PathVariable("id") Long id, @RequestBody User user) {
         return selfManagementSystemService.updateUserById(id, user);
