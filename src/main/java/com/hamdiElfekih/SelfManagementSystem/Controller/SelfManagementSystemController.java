@@ -30,6 +30,11 @@ public class SelfManagementSystemController {
         return selfManagementSystemService.getAllUsers();
     }
 
+    @GetMapping("/get-user/{id}")
+    public User getUserById(@PathVariable("id") Long id) {
+        return selfManagementSystemService.getUserById(id);
+    }
+
     @PostMapping("/add-user")
     public void setUser(@RequestBody User user) {
         selfManagementSystemService.setUser(user);

@@ -49,4 +49,8 @@ public class SelfManagementSystemService {
     public void deleteAllUsers() {
         selfManagementSystemRepository.deleteAll();
     }
+
+    public User getUserById(Long id) {
+        return selfManagementSystemRepository.findById(id).get();
+    }
 }
