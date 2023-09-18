@@ -20,12 +20,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:4200")
 public class SelfManagementSystemController {
 
     @Autowired
     SelfManagementSystemService selfManagementSystemService;
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping("/add-user")
+    public void setUser(@RequestBody User user) {
+        selfManagementSystemService.setUser(user);
+    }
+
     @GetMapping("/get-users")
     public List<User> getAllUsers() {
         return selfManagementSystemService.getAllUsers();
@@ -54,11 +59,6 @@ public class SelfManagementSystemController {
     @GetMapping("/get-users-by-email")
     public List<User> getUsersByEmail(@RequestParam String email) {
         return selfManagementSystemService.getUsersByEmail(email);
-    }
-
-    @PostMapping("/add-user")
-    public void setUser(@RequestBody User user) {
-        selfManagementSystemService.setUser(user);
     }
 
     @DeleteMapping("/delete-user/{id}")
