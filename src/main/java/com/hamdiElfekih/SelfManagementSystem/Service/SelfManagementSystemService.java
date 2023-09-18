@@ -37,6 +37,10 @@ public class SelfManagementSystemService {
         return selfManagementSystemRepository.findByJobTitle(jobTitle);
     }
 
+    public List<User> getUsersByEmail(String email) {
+        return selfManagementSystemRepository.findByEmail(email);
+    }
+
     public void setUser(User user) {
         selfManagementSystemRepository.save(user);
     }
