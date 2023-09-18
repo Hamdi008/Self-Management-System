@@ -36,9 +36,14 @@ public class SelfManagementSystemController {
         return selfManagementSystemService.getUserById(id);
     }
 
-    @GetMapping("/get-user")
-    public User getUserByFirstName(@RequestParam String firstName) {
-        return selfManagementSystemService.getUserByFirstName(firstName);
+    @GetMapping("/get-users-by-firstName")
+    public List<User> getUsersByFirstName(@RequestParam String firstName) {
+        return selfManagementSystemService.getUsersByFirstName(firstName);
+    }
+
+    @GetMapping("/get-users-by-lastName")
+    public List<User> getUsersByLastName(@RequestParam String lastName) {
+        return selfManagementSystemService.getUsersByLastName(lastName);
     }
 
     @PostMapping("/add-user")

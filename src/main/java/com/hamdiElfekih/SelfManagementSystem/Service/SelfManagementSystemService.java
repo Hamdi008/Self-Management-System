@@ -25,8 +25,12 @@ public class SelfManagementSystemService {
         return selfManagementSystemRepository.findById(id).get();
     }
 
-    public User getUserByFirstName(String firstName) {
+    public List<User> getUsersByFirstName(String firstName) {
         return selfManagementSystemRepository.findByFirstName(firstName);
+    }
+
+    public List<User> getUsersByLastName(String lastName) {
+        return selfManagementSystemRepository.findByLastName(lastName);
     }
 
     public void setUser(User user) {
