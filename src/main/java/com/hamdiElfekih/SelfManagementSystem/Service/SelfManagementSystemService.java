@@ -33,6 +33,10 @@ public class SelfManagementSystemService {
         return selfManagementSystemRepository.findByLastName(lastName);
     }
 
+    public List<User> getUsersByJobTitle(String jobTitle) {
+        return selfManagementSystemRepository.findByJobTitle(jobTitle);
+    }
+
     public void setUser(User user) {
         selfManagementSystemRepository.save(user);
     }

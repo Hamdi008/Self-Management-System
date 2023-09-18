@@ -46,6 +46,11 @@ public class SelfManagementSystemController {
         return selfManagementSystemService.getUsersByLastName(lastName);
     }
 
+    @GetMapping("/get-users-by-jobTitle")
+    public List<User> getUsersByJobTitle(@RequestParam String jobTitle) {
+        return selfManagementSystemService.getUsersByJobTitle(jobTitle);
+    }
+
     @PostMapping("/add-user")
     public void setUser(@RequestBody User user) {
         selfManagementSystemService.setUser(user);
