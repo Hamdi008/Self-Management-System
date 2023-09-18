@@ -1,9 +1,12 @@
 package com.hamdiElfekih.SelfManagementSystem.Repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import com.hamdiElfekih.SelfManagementSystem.Entity.User;
 
 public interface SelfManagementSystemRepository extends JpaRepository<User, Long> {
 
+    @Query("SELECT u FROM User u WHERE u.firstName = :firstName")
+    User findByFirstName(String firstName);
 }

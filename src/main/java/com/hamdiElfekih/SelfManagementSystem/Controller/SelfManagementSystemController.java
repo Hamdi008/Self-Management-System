@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -33,6 +34,11 @@ public class SelfManagementSystemController {
     @GetMapping("/get-user/{id}")
     public User getUserById(@PathVariable("id") Long id) {
         return selfManagementSystemService.getUserById(id);
+    }
+
+    @GetMapping("/get-user")
+    public User getUserByFirstName(@RequestParam String firstName) {
+        return selfManagementSystemService.getUserByFirstName(firstName);
     }
 
     @PostMapping("/add-user")

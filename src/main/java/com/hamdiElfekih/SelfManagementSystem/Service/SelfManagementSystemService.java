@@ -21,6 +21,14 @@ public class SelfManagementSystemService {
         return selfManagementSystemRepository.findAll();
     }
 
+    public User getUserById(Long id) {
+        return selfManagementSystemRepository.findById(id).get();
+    }
+
+    public User getUserByFirstName(String firstName) {
+        return selfManagementSystemRepository.findByFirstName(firstName);
+    }
+
     public void setUser(User user) {
         selfManagementSystemRepository.save(user);
     }
@@ -48,9 +56,5 @@ public class SelfManagementSystemService {
 
     public void deleteAllUsers() {
         selfManagementSystemRepository.deleteAll();
-    }
-
-    public User getUserById(Long id) {
-        return selfManagementSystemRepository.findById(id).get();
     }
 }
