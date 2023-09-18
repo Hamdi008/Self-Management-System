@@ -61,6 +61,11 @@ public class SelfManagementSystemController {
         return selfManagementSystemService.getUsersByEmail(email);
     }
 
+    @PutMapping("/update-user/{id}")
+    public ResponseEntity<User> updateUserById(@PathVariable("id") Long id, @RequestBody User user) {
+        return selfManagementSystemService.updateUserById(id, user);
+    }
+
     @DeleteMapping("/delete-user/{id}")
     public void deleteUserById(@PathVariable("id") Long id) {
         selfManagementSystemService.deleteUserById(id);
@@ -71,8 +76,4 @@ public class SelfManagementSystemController {
         selfManagementSystemService.deleteAllUsers();
     }
 
-    @PutMapping("/update-user/{id}")
-    public ResponseEntity<User> updateUserById(@PathVariable("id") Long id, @RequestBody User user) {
-        return selfManagementSystemService.updateUserById(id, user);
-    }
 }
