@@ -1,6 +1,6 @@
 package com.hamdiElfekih.SelfManagementSystem.Controller;
 
-import com.hamdiElfekih.SelfManagementSystem.Entity.User;
+import com.hamdiElfekih.SelfManagementSystem.Model.DTO.UserDTO;
 import com.hamdiElfekih.SelfManagementSystem.Service.SelfManagementSystemService;
 
 import java.util.List;
@@ -27,42 +27,42 @@ public class SelfManagementSystemController {
     SelfManagementSystemService selfManagementSystemService;
 
     @PostMapping("/add-user")
-    public void setUser(@RequestBody User user) {
-        selfManagementSystemService.setUser(user);
+    public void setUser(@RequestBody UserDTO userDTO) {
+        selfManagementSystemService.setUser(userDTO);
     }
 
     @GetMapping("/get-users")
-    public List<User> getAllUsers() {
+    public List<UserDTO> getAllUsers() {
         return selfManagementSystemService.getAllUsers();
     }
 
     @GetMapping("/get-user/{id}")
-    public User getUserById(@PathVariable("id") Long id) {
+    public UserDTO getUserById(@PathVariable("id") Long id) {
         return selfManagementSystemService.getUserById(id);
     }
 
     @GetMapping("/get-users-by-firstName")
-    public List<User> getUsersByFirstName(@RequestParam String firstName) {
+    public List<UserDTO> getUsersByFirstName(@RequestParam String firstName) {
         return selfManagementSystemService.getUsersByFirstName(firstName);
     }
 
     @GetMapping("/get-users-by-lastName")
-    public List<User> getUsersByLastName(@RequestParam String lastName) {
+    public List<UserDTO> getUsersByLastName(@RequestParam String lastName) {
         return selfManagementSystemService.getUsersByLastName(lastName);
     }
 
     @GetMapping("/get-users-by-jobTitle")
-    public List<User> getUsersByJobTitle(@RequestParam String jobTitle) {
+    public List<UserDTO> getUsersByJobTitle(@RequestParam String jobTitle) {
         return selfManagementSystemService.getUsersByJobTitle(jobTitle);
     }
 
     @GetMapping("/get-users-by-email")
-    public List<User> getUsersByEmail(@RequestParam String email) {
+    public List<UserDTO> getUsersByEmail(@RequestParam String email) {
         return selfManagementSystemService.getUsersByEmail(email);
     }
 
     @PutMapping("/update-user/{id}")
-    public ResponseEntity<User> updateUserById(@PathVariable("id") Long id, @RequestBody User user) {
+    public ResponseEntity<UserDTO> updateUserById(@PathVariable("id") Long id, @RequestBody UserDTO user) {
         return selfManagementSystemService.updateUserById(id, user);
     }
 
