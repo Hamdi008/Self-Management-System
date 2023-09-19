@@ -103,4 +103,15 @@ public class SelfManagementSystemService {
     public void deleteAllUsers() {
         selfManagementSystemRepository.deleteAll();
     }
+
+    public ResponseEntity<UserDTO> signUp(UserDTO user) {
+
+        User userData = UserDTO.convertDTOToUser(user);
+        if (!selfManagementSystemRepository.findByEmail(userData.getEmail()).isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.FOUND);
+        } else {
+            return new ResponseEntity<>(UserDTO.convertUserToDTO(selfManagementSystemRepository.save(userData)),
+                    HttpStatus.OK);
+        }
+    }
 }
