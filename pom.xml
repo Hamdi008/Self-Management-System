@@ -63,6 +63,26 @@
         <version>2.4.4</version>
     	</dependency> -->
 
+		<!-- Use jjwt library To establish the Token-Based Authentication approach 
+		to make a relationship between a User who signed In and his other services like task Management-->
+		<dependency>
+    		<groupId>io.jsonwebtoken</groupId>
+    		<artifactId>jjwt-api</artifactId>
+    		<version>0.11.2</version>
+		</dependency>
+		<dependency>
+    		<groupId>io.jsonwebtoken</groupId>
+    		<artifactId>jjwt-impl</artifactId>
+    		<version>0.11.2</version>
+		</dependency>
+		<dependency>
+    		<groupId>io.jsonwebtoken</groupId>
+    		<artifactId>jjwt-jackson</artifactId>
+    		<version>0.11.2</version>
+		</dependency>
+
+
+
 	</dependencies>
 	
 	<packaging>jar</packaging>
