@@ -20,4 +20,7 @@ public interface SelfManagementSystemRepository extends JpaRepository<User, Long
 
     @Query("SELECT u FROM User u WHERE u.email = :email")
     List<User> findByEmail(String email);
+
+    @Query("SELECT u FROM User u WHERE u.password = :password")
+    List<User> findByPassword(String password);
 }

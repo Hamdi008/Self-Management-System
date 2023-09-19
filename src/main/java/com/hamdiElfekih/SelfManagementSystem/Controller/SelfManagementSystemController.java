@@ -36,6 +36,11 @@ public class SelfManagementSystemController {
         return selfManagementSystemService.signUp(user);
     }
 
+    @GetMapping("/signin")
+    public ResponseEntity<UserDTO> signIn(@RequestBody UserDTO user) {
+        return selfManagementSystemService.signIn(user);
+    }
+
     @GetMapping("/get-users")
     public List<UserDTO> getAllUsers() {
         return selfManagementSystemService.getAllUsers();

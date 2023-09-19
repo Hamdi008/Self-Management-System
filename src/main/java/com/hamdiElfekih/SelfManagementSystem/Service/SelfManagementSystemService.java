@@ -114,4 +114,13 @@ public class SelfManagementSystemService {
                     HttpStatus.OK);
         }
     }
+
+    public ResponseEntity<UserDTO> signIn(UserDTO user) {
+
+        if (!selfManagementSystemRepository.findByEmail(user.getEmail()).isEmpty() &&
+                !selfManagementSystemRepository.findByPassword(user.getPassword()).isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
 }
