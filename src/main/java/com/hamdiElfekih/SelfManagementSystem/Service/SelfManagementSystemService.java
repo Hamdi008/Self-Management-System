@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.hamdiElfekih.SelfManagementSystem.Entity.User;
@@ -15,6 +16,9 @@ import com.hamdiElfekih.SelfManagementSystem.Repository.SelfManagementSystemRepo
 
 @Service
 public class SelfManagementSystemService {
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     SelfManagementSystemRepository selfManagementSystemRepository;
@@ -74,7 +78,9 @@ public class SelfManagementSystemService {
     }
 
     public void setUser(UserDTO userDTO) {
-        selfManagementSystemRepository.save(UserDTO.convertDTOToUser(userDTO));
+        User user = UserDTO.convertDTOToUser(userDTO);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        selfManagementSystemRepository.save(user);
     }
 
     public void deleteUserById(Long id) {
@@ -110,6 +116,7 @@ public class SelfManagementSystemService {
         if (!selfManagementSystemRepository.findByEmail(userData.getEmail()).isEmpty()) {
             return new ResponseEntity<>(HttpStatus.FOUND);
         } else {
+            userData.setPassword(passwordEncoder.encode(userData.getPassword()));
             return new ResponseEntity<>(UserDTO.convertUserToDTO(selfManagementSystemRepository.save(userData)),
                     HttpStatus.OK);
         }
